@@ -37,6 +37,20 @@ components:
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
+        - name: QUARKUS_DATASOURCE_DB-KIND
+          value: postgresql
+        - name: QUARKUS_DATASOURCE_USERNAME
+          value: quarkus_test
+        - name: QUARKUS_DATASOURCE_PASSWORD
+          value: quarkus_test
+        - name: QUARKUS_DATASOURCE_JDBC_URL
+          value: jdbc:postgresql://localhost/quarkus_test
+        - name: QUARKUS_DATASOURCE_PASSWORD
+          value: quarkus_test
+        - name: QUARKUS_HIBERNATE-ORM_DATABASE_GENERATION
+          value: update
+        - name: QUARKUS_HIBERNATE-ORM_SQL-LOAD-SCRIPT
+          value: import.sql
       endpoints:
         - exposure: none
           name: debug
