@@ -30,7 +30,7 @@ projects:
 commands:
   - id: inject-editor
     apply:
-      component: editor-injector
+      component: idea-editor-injector
   - id: start-idea-server
     exec:
       component: editor-runtime
@@ -62,7 +62,7 @@ events:
 components:
   - name: idea-server
     volume: {}
-  - name: editor-injector
+  - name: idea-editor-injector
     container:
       image: quay.io/che-incubator/che-idea-dev-server:next
       command:
