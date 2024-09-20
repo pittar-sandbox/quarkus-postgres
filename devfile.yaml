@@ -54,7 +54,9 @@ components:
         - name: QUARKUS_ANALYTICS_DISABLED
           value: "true"
         - name: QUARKUS_DEV_UI_HOSTS
-          value: admin-quarkus-postgres-main.apps.lab.pitt.ca
+          value: *.apps.lab.pitt.ca
+        - name: QUARKUS_DEV_UI_CORS_ENABLED
+          value: "false"
       endpoints:
         - exposure: none
           name: debug
