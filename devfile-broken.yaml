@@ -1,0 +1,126 @@
+schemaVersion: 2.2.2
+metadata:
+  name: quarkus-intellij
+  displayName: IntelliJ IDEA Ultimate (desktop)
+  description: JetBrains IntelliJ IDEA Ultimate dev server for Eclipse Che - next
+  icon: /images/intellij-idea.svg
+  tags:
+    - Tech-Preview
+  attributes:
+    publisher: che-incubator
+    version: next
+    title: JetBrains IntelliJ IDEA Ultimate dev server for Eclipse Che - next
+    repository: https://github.com/che-incubator/che-idea-dev-server
+    firstPublicationDate: '2023-30-11'
+projects:
+  - name: "quarkus-postgres"
+    git:
+      remotes:
+        origin: "https://github.com/pittar-sandbox/quarkus-postgres"
+      checkoutFrom:
+        revision: "main"
+        remote: origin
+  - name: "quarkus-postgres-gitops"
+    git:
+      remotes:
+        origin: "https://github.com/pittar-sandbox/quarkus-postgres-gitops"
+      checkoutFrom:
+        revision: "main"
+        remote: origin
+commands:
+  - id: inject-editor
+    apply:
+      component: editor-injector
+  - id: start-idea-server
+    exec:
+      component: editor-runtime
+      commandLine: nohup /idea-server/entrypoint-volume.sh > /idea-server/std.out 2>&1 &
+  - id: 1-package
+    exec:
+      label: "1. Package the application"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/quarkus-postgres
+      commandLine: "./mvnw package"
+      group:
+        kind: build
+        isDefault: true
+  - id: 2-startdev
+    exec:
+      label: "2. Start Development mode (Hot reload + debug)"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/quarkus-postgres
+      commandLine: "./mvnw compile quarkus:dev"
+      group:
+        kind: run
+        isDefault: true
+events:
+  preStart:
+    - inject-editor
+  postStart:
+    - start-idea-server
+components:
+  - name: idea-server
+    volume: {}
+  - name: editor-injector
+    container:
+      image: quay.io/che-incubator/che-idea-dev-server:next
+      command:
+        - /entrypoint-init-container.sh
+      volumeMounts:
+        - name: idea-server
+          path: /idea-server
+      memoryLimit: 256Mi
+      memoryRequest: 32Mi
+      cpuLimit: 500m
+      cpuRequest: 30m
+  - name: editor-runtime
+    container:
+      image: quay.io/devfile/universal-developer-image@sha256:1b84280bea96228affa7ecedd7347e6801f6e369bdfa7e40dabfc4fa99f9cad6
+      memoryLimit: 6144Mi
+      memoryRequest: 2048Mi
+      cpuLimit: 2000m
+      cpuRequest: 1500m
+      volumeMounts:
+        - name: idea-server
+          path: /idea-server
+        - name: m2
+          path: /home/user/.m2
+      endpoints:
+        - name: idea-server
+          attributes:
+            type: main
+            cookiesAuthEnabled: true
+            discoverable: false
+            urlRewriteSupported: true
+          targetPort: 3400
+          exposure: public
+          secure: true
+          protocol: https
+    attributes:
+      app.kubernetes.io/component: editor-runtime
+      app.kubernetes.io/part-of: idea-server.eclipse.org
+      controller.devfile.io/container-contribution: true
+  - name: "postgres"
+    container:
+      image: "registry.redhat.io/rhel9/postgresql-16:latest"
+      memoryLimit: "512M"
+      env:
+        - name: POSTGRESQL_DATABASE
+          value: quarkus_test
+        - name: POSTGRESQL_USER
+          value: quarkus_test
+        - name: POSTGRESQL_PASSWORD
+          value: quarkus_test
+      volumeMounts:
+        - name: pgdata
+          path: /var/lib/pgsql/data
+      endpoints:
+        - name: postgres
+          targetPort: 5432
+          exposure: internal
+  - volume:
+      size: 1G
+    name: m2
+  - volume:
+      size: 2Gi
+    name: pgdata
