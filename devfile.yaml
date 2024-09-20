@@ -51,6 +51,8 @@ components:
           value: update
         - name: QUARKUS_HIBERNATE-ORM_SQL-LOAD-SCRIPT
           value: import.sql
+        - name: QUARKUS_ANALYTICS_DISABLED
+          value: "true"
       endpoints:
         - exposure: none
           name: debug
