@@ -20,13 +20,13 @@ projects:
       checkoutFrom:
         revision: "main"
         remote: origin
-  # - name: "quarkus-postgres-gitops"
-  #   git:
-  #     remotes:
-  #       origin: "https://github.com/pittar-sandbox/quarkus-postgres-gitops"
-  #     checkoutFrom:
-  #       revision: "main"
-  #       remote: origin
+  - name: "quarkus-postgres-gitops"
+    git:
+      remotes:
+        origin: "https://github.com/pittar-sandbox/quarkus-postgres-gitops"
+      checkoutFrom:
+        revision: "main"
+        remote: origin
 commands:
   - id: inject-editor
     apply:
@@ -40,7 +40,6 @@ commands:
       label: "1. Package the application"
       component: tools
       workingDir: ${PROJECTS_ROOT}/quarkus-postgres
-      #commandLine: "./mvnw package"
       commandLine: "./mvnw package"
       group:
         kind: build
@@ -84,8 +83,8 @@ components:
       volumeMounts:
         - name: idea-server
           path: /idea-server
-        # - name: m2
-        #   path: /home/user/.m2
+        - name: m2
+          path: /home/user/.m2
       endpoints:
         - name: idea-server
           attributes:
@@ -101,27 +100,27 @@ components:
       app.kubernetes.io/component: editor-runtime
       app.kubernetes.io/part-of: idea-server.eclipse.org
       controller.devfile.io/container-contribution: true
-  # - name: "postgres"
-  #   container:
-  #     image: "registry.redhat.io/rhel9/postgresql-16:latest"
-  #     memoryLimit: "512M"
-  #     env:
-  #       - name: POSTGRESQL_DATABASE
-  #         value: quarkus_test
-  #       - name: POSTGRESQL_USER
-  #         value: quarkus_test
-  #       - name: POSTGRESQL_PASSWORD
-  #         value: quarkus_test
-  #     volumeMounts:
-  #       - name: pgdata
-  #         path: /var/lib/pgsql/data
-  #     endpoints:
-  #       - name: postgres
-  #         targetPort: 5432
-  #         exposure: internal
-  # - volume:
-  #     size: 1G
-  #   name: m2
-  # - volume:
-  #     size: 2Gi
-  #   name: pgdata
+  - name: "postgres"
+    container:
+      image: "registry.redhat.io/rhel9/postgresql-16:latest"
+      memoryLimit: "512M"
+      env:
+        - name: POSTGRESQL_DATABASE
+          value: quarkus_test
+        - name: POSTGRESQL_USER
+          value: quarkus_test
+        - name: POSTGRESQL_PASSWORD
+          value: quarkus_test
+      volumeMounts:
+        - name: pgdata
+          path: /var/lib/pgsql/data
+      endpoints:
+        - name: postgres
+          targetPort: 5432
+          exposure: internal
+  - volume:
+      size: 1G
+    name: m2
+  - volume:
+      size: 2Gi
+    name: pgdata
