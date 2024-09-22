@@ -54,7 +54,7 @@ components:
         - name: QUARKUS_ANALYTICS_DISABLED
           value: "true"
         - name: QUARKUS_DEV_UI_HOSTS
-          value: '*.apps.lab.pitt.ca'
+          value: '<username>-<project-name>-<branch>.apps.<cluster domain>'
         - name: QUARKUS_DEV_UI_CORS_ENABLED
           value: "false"
       endpoints:
