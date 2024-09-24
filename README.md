@@ -1,6 +1,6 @@
 # Quarkus demo: Hibernate ORM with Panache and RESTEasy
 
-[https://devspaces.apps.lab.pitt.ca/f?url=https://github.com/pittar-sandbox/quarkus-postgres&che-editor=https://github.com/pittar-sandbox/quarkus-postgres/blob/main/devfile-intellij.yaml](https://devspaces.apps.lab.pitt.ca/f?url=https://github.com/pittar-sandbox/quarkus-postgres&che-editor=https://github.com/pittar-sandbox/quarkus-postgres/blob/main/devfile-intellij.yaml)
+[https://devspaces.apps.lab.pitt.ca/f?url=https://github.com/pittar-sandbox/quarkus-postgres&che-editor=https://raw.githubusercontent.com/pittar-sandbox/quarkus-postgres/refs/heads/main/devfile-intellij.yaml](https://devspaces.apps.lab.pitt.ca/f?url=https://github.com/pittar-sandbox/quarkus-postgres&che-editor=https://raw.githubusercontent.com/pittar-sandbox/quarkus-postgres/refs/heads/main/devfile-intellij.yaml)
 
 
 This is a minimal CRUD service exposing a couple of endpoints over REST,
