@@ -45,6 +45,10 @@ components:
           value: import.sql
         - name: QUARKUS_ANALYTICS_DISABLED
           value: "true"
+        - name: KUBEDOCK_ENABLED
+          value: 'true'
+        - name: DOCKER_HOST
+          value: 'tcp://127.0.0.1:2475'
       endpoints:
         - exposure: none
           name: debug
