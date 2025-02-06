@@ -3,7 +3,7 @@ schemaVersion: 2.2.0
 #   controller.devfile.io/storage-type: per-workspace
 metadata:
   name: quarkus-postgres
-  version: 1.2.1
+  version: 2.2.2
   provider: Red Hat
   icon: https://design.jboss.org/quarkus/logo/final/SVG/quarkus_icon_rgb_default.svg
   website: https://quarkus.io
