@@ -2,7 +2,7 @@ schemaVersion: 2.2.0
 # attributes:
 #   controller.devfile.io/storage-type: per-workspace
 metadata:
-  name: quarkus-postgres
+  name: devspaces-demo
   version: 2.2.2
   provider: Red Hat
   icon: https://design.jboss.org/quarkus/logo/final/SVG/quarkus_icon_rgb_default.svg
@@ -16,10 +16,10 @@ metadata:
   projectType: Quarkus
   language: Java
 projects:
-  - name: "quarkus-postgres"
+  - name: "devspaces-demo"
     git:
       remotes:
-        origin: "https://github.com/pittar-sandbox/quarkus-postgres"
+        origin: "https://github.com/pittar-sandbox/devspaces-demo"
       checkoutFrom:
         revision: "main"
         remote: origin
@@ -93,7 +93,7 @@ components:
 #     exec:
 #       label: "1. Package the application"
 #       component: tools
-#       workingDir: ${PROJECTS_ROOT}/quarkus-postgres
+#       workingDir: ${PROJECTS_ROOT}/devspaces-demo
 #       commandLine: "./mvnw package"
 #       group:
 #         kind: build
@@ -102,7 +102,7 @@ components:
 #     exec:
 #       label: "2. Start Development mode (Hot reload + debug)"
 #       component: tools
-#       workingDir: ${PROJECTS_ROOT}/quarkus-postgres
+#       workingDir: ${PROJECTS_ROOT}/devspaces-demo
 #       commandLine: "./mvnw compile quarkus:dev"
 #       group:
 #         kind: run
