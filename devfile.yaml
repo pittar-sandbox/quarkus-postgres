@@ -1,6 +1,6 @@
 schemaVersion: 2.2.0
-attributes:
-  controller.devfile.io/storage-type: per-workspace
+# attributes:
+#   controller.devfile.io/storage-type: per-workspace
 metadata:
   name: quarkus-postgres
   version: 1.2.1
@@ -88,22 +88,22 @@ components:
   - volume:
       size: 2Gi
     name: pgdata
-commands:
-  - id: 1-package
-    exec:
-      label: "1. Package the application"
-      component: tools
-      workingDir: ${PROJECTS_ROOT}/quarkus-postgres
-      commandLine: "./mvnw package"
-      group:
-        kind: build
-        isDefault: true
-  - id: 2-startdev
-    exec:
-      label: "2. Start Development mode (Hot reload + debug)"
-      component: tools
-      workingDir: ${PROJECTS_ROOT}/quarkus-postgres
-      commandLine: "./mvnw compile quarkus:dev"
-      group:
-        kind: run
-        isDefault: true
+# commands:
+#   - id: 1-package
+#     exec:
+#       label: "1. Package the application"
+#       component: tools
+#       workingDir: ${PROJECTS_ROOT}/quarkus-postgres
+#       commandLine: "./mvnw package"
+#       group:
+#         kind: build
+#         isDefault: true
+#   - id: 2-startdev
+#     exec:
+#       label: "2. Start Development mode (Hot reload + debug)"
+#       component: tools
+#       workingDir: ${PROJECTS_ROOT}/quarkus-postgres
+#       commandLine: "./mvnw compile quarkus:dev"
+#       group:
+#         kind: run
+#         isDefault: true
