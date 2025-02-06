@@ -26,7 +26,7 @@ projects:
 components:
   - name: tools
     container:
-      image: registry.redhat.io/devspaces/udi-rhel8:3.16
+      image: registry.redhat.io/devspaces/udi-rhel9:latest
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
