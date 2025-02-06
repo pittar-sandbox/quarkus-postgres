@@ -19,7 +19,7 @@ projects:
   - name: "devspaces-demo"
     git:
       remotes:
-        origin: "https://github.com/pittar-sandbox/devspaces-demo"
+        origin: "https://github.com/pittar-sandbox/quarkus-postgres"
       checkoutFrom:
         revision: "main"
         remote: origin
