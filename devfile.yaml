@@ -113,8 +113,8 @@ commands:
   - id: configure-continue
     exec:
       component: tools
-      commandLine: cp .continue/config.json /usr/home/.continue/config.json
-      workingDir: ${PROJECTS_ROOT}
+      commandLine: cp .continue/config.json /home/user/.continue/config.json
+      workingDir: ${PROJECT_SOURCE}
       group:
         kind: run
         isDefault: false
