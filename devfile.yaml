@@ -62,10 +62,10 @@ components:
       volumeMounts:
         - name: m2
           path: /home/user/.m2
-      cpuLimit: '3'
+      cpuLimit: '4'
       cpuRequest: '1'
-      memoryLimit: '4G'
-      memoryRequest: '4G'
+      memoryLimit: '8G'
+      memoryRequest: '8G'
       mountSources: true
   - name: postgres
     container:
