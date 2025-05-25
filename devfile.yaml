@@ -110,3 +110,11 @@ commands:
       group:
         kind: run
         isDefault: true
+  - id: configure-continue
+    exec:
+      component: tools
+      commandLine: cp .continue/config.json /usr/home/.continue/config.json
+      workingDir: ${PROJECTS_ROOT}
+      group:
+        kind: run
+        isDefault: false
