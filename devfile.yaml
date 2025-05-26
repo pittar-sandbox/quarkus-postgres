@@ -113,8 +113,7 @@ commands:
   - id: configure-continue
     exec:
       component: tools
-      commandLine: cp .continue/*.* /home/user/.continue/
-      workingDir: ${PROJECT_SOURCE}
-      group:
-        kind: run
-        isDefault: false
+      commandLine: "mkdir -p /home/user/.continue && cp /config/continue/*.* /home/user/.continue/"
+events:
+  postStart:
+    - configure-continue
