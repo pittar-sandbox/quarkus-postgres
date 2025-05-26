@@ -114,6 +114,6 @@ commands:
     exec:
       component: tools
       commandLine: "mkdir -p /home/user/.continue && cp /data/config.json /home/user/.continue/"
-events:
-  postStart:
-    - configure-continue
+# events:
+#   postStart:
+#     - configure-continue
