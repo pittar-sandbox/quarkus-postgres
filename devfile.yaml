@@ -110,10 +110,10 @@ commands:
       group:
         kind: run
         isDefault: true
-  - id: configure-continue
-    exec:
-      component: tools
-      commandLine: "mkdir -p /home/user/.continue && cp /data/config/continue/*.* /home/user/.continue/"
-events:
-  postStart:
-    - configure-continue
+#   - id: configure-continue
+#     exec:
+#       component: tools
+#       commandLine: "mkdir -p /home/user/.continue && cp /data/config/continue/*.* /home/user/.continue/"
+# events:
+#   postStart:
+#     - configure-continue
